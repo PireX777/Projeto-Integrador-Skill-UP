@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plataforma</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+
+  <!-- ================== TELA DE CADASTRO ================== -->
+  <section class="cadastro-container" id="cadastro" style="display:none;">
+    <div class="cadastro-card fade-in">
+      <h2>Crie sua conta</h2>
+      <p class="muted">Acesse sua plataforma de aprendizagem</p>
+
+      <form class="form">
+        <div class="input-group">
+          <label>Nome completo</label>
+          <input id="cadNome" type="text" placeholder="Digite seu nome" required>
+        </div>
+
+        <div class="input-group">
+          <label>E-mail</label>
+          <input id="cadEmail" type="email" placeholder="exemplo@email.com" required>
+        </div>
+
+        <div class="input-group">
+          <label>Senha</label>
+          <input id="cadSenha" type="password" placeholder="Digite sua senha" required>
+        </div>
+
+        <button type="button" class="btn full" onclick="criarConta()">Criar conta</button>
+
+        <p class="login-text">
+          Já tem conta? <a href="#" onclick="abrirLogin()">Entrar</a>
+        </p>
+      </form>
+    </div>
+  </section>
+
+
+  <!-- ================== TELA DE LOGIN ================== -->
+  <section class="login-container" id="login" style="display:none;">
+    <div class="cadastro-card fade-in">
+      <h2>Entrar</h2>
+      <p class="muted">Acesse sua conta</p>
+
+      <form class="form">
+        <div class="input-group">
+          <label>E-mail</label>
+          <input id="loginEmail" type="email" placeholder="Digite seu e-mail" required>
+        </div>
+
+        <div class="input-group">
+          <label>Senha</label>
+          <input id="loginSenha" type="password" placeholder="Digite sua senha" required>
+        </div>
+
+        <button type="button" class="btn full" onclick="fazerLogin()">Entrar</button>
+
+        <p class="login-text">
+          Ainda não tem conta? <a href="#" onclick="abrirCadastro()">Criar conta</a>
+        </p>
+      </form>
+    </div>
+  </section>
+
+
+
+  <!-- ================== HERO (página inicial / começar agora) ================== -->
+  <section class="hero" id="inicio">
+    <div class="hero-content">
+      <h1 class="fade-in">
+        <img src="./imagem/logo.png" alt="Skill UP">
+      </h1>
+      <button class="btn glow" onclick="abrirCadastroFromHero()">
+        Começar agora
+      </button>
+    </div>
+  </section>
+
+  <!-- ================== CONTEÚDO DO SITE (início oculto até login/cadastro) ================== -->
+  <div id="conteudo-site" style="display:none">
+
+
+    <!-- GAME LINK -->
+    <section class="game-link-section">
+      <div class="game-link-card">
+        <h3>🎮 Link do Jogo</h3>
+        <p class="muted">Clique no botão para jogar</p>
+
+          <div style="display:flex; gap:8px; align-items:center; justify-content:center; flex-wrap:wrap;">
+            <a class="game-link-button" 
+              href="https://ylo2-6.itch.io/skillup-interactive" 
+              target="_blank">
+              Acessar o Jogo
+            </a>
+            <a class="game-link-button" href="funcionamento.html" target="_blank" rel="noopener noreferrer" style="background:linear-gradient(90deg,#fff,#f4f7ff); color:#0b2530; font-weight:700; border-radius:12px; padding:12px 18px; text-decoration:none; box-shadow:0 10px 26px rgba(10,20,30,0.08);">Como funciona</a>
+          </div>
+      </div>
+    </section>
+
+
+
+    <!-- ====================== SOBRE ====================== -->
+    
+
+    <section class="sobre-section">
+      <div class="sobre-container fade-in">
+        <h2>Sobre o SkillUp Interactive</h2>
+
+        <p>
+          SkillUp Interactive é uma plataforma gamificada de treinamento corporativo que
+          transforma aprendizagem em uma experiência dinâmica e motivadora.
+        </p>
+
+        <p>
+          Com trilhas de conhecimento, missões rápidas, recompensas, níveis e feedback
+          imediato, o sistema mantém os colaboradores engajados enquanto desenvolvem
+          habilidades essenciais.
+        </p>
+      </div>
+    </section>
+<!-- ====================== SEÇÃO DE DESCRIÇÃO DO PROJETO ====================== -->
+<section class="descricao-projeto-section fade-in">
+  <div class="descricao-container">
+
+    <h2>Propósito da Plataforma</h2>
+
+    <p>
+      Desenvolver uma plataforma web gamificada de treinamento corporativo que 
+      promova maior engajamento, autonomia e retenção de conhecimento.
+    </p>
+
+    <p>
+      A solução visa transformar o aprendizado em uma jornada interativa baseada em
+      <strong>microlearning</strong>, utilizando mecânicas de jogo como:
+    </p>
+
+    <ul class="descricao-lista">
+      <li>✔ XP, níveis, medalhas, ranking e SkillCoins;</li>
+      <li>✔ Trilhas temáticas (soft skills, hard skills, compliance, cultura organizacional);</li>
+      <li>✔ Feedback imediato e adaptativo conforme o desempenho;</li>
+      <li>✔ Acompanhamento de métricas de desempenho e engajamento por gestores;</li>
+      <li>✔ Substituição de treinamentos tradicionais por uma plataforma moderna e responsiva.</li>
+    </ul>
+
+    <p>
+      O sistema é projetado para ser intuitivo, escalável e adequado para empresas de
+      diferentes portes e necessidades, mantendo o foco na evolução contínua do colaborador.
+    </p>
+
+  </div>
+</section>
+
+<!-- ====================== CARDS SOBRE A SKILL UP ====================== -->
+<section class="skillup-info-section">
+  <h2 class="title-info">Mais Sobre a SkillUp Interactive</h2>
+
+  <div class="skillup-cards">
+
+    <div class="s-card">
+      <h3>📌 Justificativa</h3>
+      <p>
+        As empresas enfrentam crescente dificuldade em engajar colaboradores em treinamentos longos e tradicionais.
+        A SkillUp transforma esse processo em jornadas curtas, gamificadas e mensuráveis, alinhadas ao perfil digital atual.
+      </p>
+    </div>
+
+    <div class="s-card">
+      <h3>🎯 Objetivo</h3>
+      <p>
+        Tornar o treinamento corporativo uma experiência gamificada, interativa e contínua, elevando engajamento e
+        acelerando o desenvolvimento profissional.
+      </p>
+    </div>
+
+    <div class="s-card">
+      <h3>🎨 Conceito Visual</h3>
+      <p>
+        Interface leve, moderna e dinâmica, inspirada em apps de jogos e produtividade, focada em clareza,
+        fluidez e estímulo visual através de animações e cores vibrantes.
+      </p>
+    </div>
+
+    <div class="s-card">
+      <h3>⚙ Problema</h3>
+      <p>
+        Treinamentos longos, cansativos, sem métricas claras e com baixo engajamento dos colaboradores.
+      </p>
+    </div>
+
+    <div class="s-card">
+      <h3>🚀 Solução</h3>
+      <p>
+        Gamificação + microlearning + desafios rápidos + recompensas = engajamento contínuo e aprendizado mais eficiente.
+      </p>
+    </div>
+
+    <!-- três cards removidos conforme solicitado: Diferenciais, Benefícios, Público-Alvo -->
+
+  </div>
+</section>
+
+
+
+    <!-- ====================== PROGRESSO ====================== -->
+    <section id="modulos" class="modulos-section">
+      <header class="slide-up">
+        <h2>Progresso dos Participantes</h2>
+        <p>Acompanhe o desempenho e o progresso de cada membro da equipe.</p>
+      </header>
+
+      <div class="cards-container slide-up">
+
+        <div class="card">
+          <img src="Foto da pessoa 1">
+          <div class="info">
+            <h3>Isabel Fernandes</h3>
+            <div class="progress-bar">
+              <div class="progress" data-progress="85"></div>
+            </div>
+            <span class="percent">85%</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="Foto da pessoa 2">
+          <div class="info">
+            <h3>Jhonatan Oliveira</h3>
+            <div class="progress-bar">
+              <div class="progress" data-progress="60"></div>
+            </div>
+            <span class="percent">60%</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <img src="Foto da pessoa 3">
+          <div class="info">
+            <h3>Ana Flávia</h3>
+            <div class="progress-bar">
+              <div class="progress" data-progress="40"></div>
+            </div>
+            <span class="percent">40%</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+  </div>
+
+    <!-- ====================== ÁREA DE FEEDBACK (aparece ao final do conteúdo do game) ====================== -->
+    <section class="feedback-section">
+      <h2>Nos dê seu Feedback</h2>
+      <p class="feedback-sub">Como foi sua experiência com a plataforma?</p>
+
+      <div class="feedback-buttons">
+
+        <button class="fb-btn" onclick="enviarFeedback('Excelente')">⭐ Excelente</button>
+        <button class="fb-btn" onclick="enviarFeedback('Bom')">😊 Bom</button>
+        <button class="fb-btn" onclick="enviarFeedback('Regular')">😐 Regular</button>
+        <button class="fb-btn" onclick="enviarFeedback('Ruim')">😞 Ruim</button>
+
+      </div>
+
+      <p id="feedback-msg" class="feedback-message"></p>
+    </section>
+
+  <!-- =============== SISTEMA DE LOGIN & CADASTRO (BANCO) =============== -->
+<script>
+
+// =========================
+// SALVAR CONTA NO LOCALSTORAGE
+// =========================
+function criarConta(){
+  const nome = document.getElementById("cadNome").value;
+  const email = document.getElementById("cadEmail").value;
+  const senha = document.getElementById("cadSenha").value;
+
+  if(!nome || !email || !senha){
+    showNotification('error', 'Preencha todos os campos!');
+    return;
+  }
+
+  let users = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  if(users.some(u => u.email === email)){
+    showNotification('error', 'Este e-mail já está cadastrado!');
+    return;
+  }
+
+  users.push({ nome, email, senha });
+  localStorage.setItem("usuarios", JSON.stringify(users));
+
+  // mostrar sucesso e redirecionar para login (com prefill do e-mail)
+  showNotification('success', 'Conta criada com sucesso!');
+  // após um instante, redirecionar para a tela de login (prefill do e-mail)
+  setTimeout(() => {
+    abrirLogin();
+    const loginEmail = document.getElementById('loginEmail');
+    if(loginEmail) loginEmail.value = email || '';
+  }, 900);
+}
+
+
+
+// =========================
+// FUNÇÃO DE LOGIN
+// =========================
+function fazerLogin(){
+  const email = document.getElementById("loginEmail").value;
+  const senha = document.getElementById("loginSenha").value;
+
+  let users = JSON.parse(localStorage.getItem("usuarios")) || [];
+
+  // separar checagem por e-mail para dar mensagens corretas
+  const userByEmail = users.find(u => u.email === email);
+  if(!userByEmail){
+    showNotification('error', 'Você não tem cadastro! Redirecionando para cadastro...');
+    // redireciona para tela de cadastro e preenche o e-mail
+    setTimeout(() => {
+      abrirCadastro();
+      const cadEmail = document.getElementById('cadEmail');
+      if(cadEmail) cadEmail.value = email || '';
+    }, 900);
+    return;
+  }
+
+  if(userByEmail.senha !== senha){
+    showNotification('error', 'E-mail ou senha incorretos!');
+    return;
+  }
+
+  const userFound = userByEmail;
+
+  localStorage.setItem("usuarioLogado", JSON.stringify(userFound));
+  // notificação de sucesso e exibir conteúdo
+  showNotification('success', `Bem-vindo, ${userFound.nome || 'usuário'}!`);
+  setTimeout(() => {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("cadastro").style.display = "none";
+    document.getElementById("inicio").style.display = "none";
+    document.getElementById("conteudo-site").style.display = "block";
+    // iniciar simulação de progresso e animar cards
+    startProgressSimulation();
+    // adicionar classe ambient ao card do jogo para dar movimento
+    const gameCard = document.querySelector('.game-link-card');
+    if(gameCard) gameCard.classList.add('game-ambient');
+    // aplicar pulso aos cards de progresso
+    document.querySelectorAll('.modulos-section .card').forEach((c,i)=>{
+      // staggered start
+      setTimeout(()=> c.classList.add('pulse'), i*300);
+    });
+  }, 700);
+}
+
+
+
+// =========================
+// TROCAR ENTRE TELAS
+// =========================
+function abrirLogin(){
+  document.getElementById("cadastro").style.display = "none";
+  document.getElementById("login").style.display = "flex";
+  // hide hero when switching to login
+  const hero = document.getElementById('inicio');
+  if(hero) hero.style.display = 'none';
+}
+
+function abrirCadastro(){
+  document.getElementById("login").style.display = "none";
+  document.getElementById("cadastro").style.display = "flex";
+  // hide hero when switching to cadastro
+  const hero = document.getElementById('inicio');
+  if(hero) hero.style.display = 'none';
+}
+
+// função chamada a partir do botão 'Começar agora' no hero
+function abrirCadastroFromHero(){
+  const hero = document.getElementById('inicio');
+  if(hero) hero.style.display = 'none';
+  const cad = document.getElementById('cadastro');
+  if(cad) cad.style.display = 'flex';
+}
+
+
+function enviarFeedback(tipo){
+    const msg = document.getElementById("feedback-msg");
+    msg.innerText = `Obrigado! Seu feedback "${tipo}" foi registrado.`;
+    msg.style.opacity = "1";
+
+    setTimeout(() => {
+      msg.style.opacity = "0";
+    }, 3000);
+  }
+// ====================== NOTIFICAÇÃO VISUAL (CARD) ======================
+function showNotification(type, message, duration = 3800){
+  // create root if not present
+  let root = document.getElementById('notify-root');
+  if(!root){
+    root = document.createElement('div');
+    root.id = 'notify-root';
+    root.className = 'notify-root';
+    document.body.appendChild(root);
+  }
+
+  const card = document.createElement('div');
+  card.className = 'notify-card ' + (type === 'success' ? 'success' : 'error');
+
+  const icon = document.createElement('div');
+  icon.className = 'icon';
+  icon.innerText = type === 'success' ? '✓' : '✖';
+
+  const body = document.createElement('div');
+  body.className = 'body';
+  const title = document.createElement('div');
+  title.className = 'title';
+  title.innerText = type === 'success' ? 'Sucesso' : 'Erro';
+  const text = document.createElement('div');
+  text.className = 'text';
+  text.innerText = message;
+
+  const closeBtn = document.createElement('button');
+  closeBtn.className = 'close-btn';
+  closeBtn.innerText = '×';
+  closeBtn.onclick = () => removeNotify(card);
+
+  body.appendChild(title);
+  body.appendChild(text);
+  card.appendChild(icon);
+  card.appendChild(body);
+  card.appendChild(closeBtn);
+
+  root.appendChild(card);
+
+  // auto remove
+  const timeout = setTimeout(() => {
+    removeNotify(card);
+  }, duration);
+
+  function removeNotify(el){
+    clearTimeout(timeout);
+    el.style.animation = 'notifyOut .32s ease forwards';
+    setTimeout(() => { el.remove(); }, 320);
+  }
+}
+</script>
+
+<!-- container root para notificações (caso JS precise localizar) -->
+<div id="notify-root" class="notify-root" aria-live="polite"></div>
+
+<script>
+// ====================== PROGRESS SIMULATION (real-time feel) ======================
+let progressInterval = null;
+function startProgressSimulation(){
+  // clear existing interval
+  if(progressInterval) clearInterval(progressInterval);
+
+  const progresses = Array.from(document.querySelectorAll('.progress'));
+  // initialize widths and base targets
+  progresses.forEach(p => {
+    const base = Number(p.getAttribute('data-progress')) || 0;
+    p.dataset.base = base;
+    p.style.width = base + '%';
+    const percentEl = p.closest('.card')?.querySelector('.percent');
+    if(percentEl) percentEl.innerText = base + '%';
+  });
+
+  // update randomly small jitter to simulate live updates
+  progressInterval = setInterval(()=>{
+    progresses.forEach(p => {
+      const base = Number(p.dataset.base) || 0;
+      // jitter between -3 and +6, but keep within [0,100]
+      const jitter = Math.floor(Math.random() * 10) - 3;
+      let val = Math.max(0, Math.min(100, base + jitter));
+      // smooth update
+      p.style.width = val + '%';
+      const percentEl = p.closest('.card')?.querySelector('.percent');
+      if(percentEl) percentEl.innerText = val + '%';
+    });
+  }, 2200 + Math.floor(Math.random()*1200));
+}
+
+function stopProgressSimulation(){ if(progressInterval) clearInterval(progressInterval); }
+
+// ====================== THEME TOGGLE ======================
+// theme toggle removed
+</script>
+
+</body>
+</html>
