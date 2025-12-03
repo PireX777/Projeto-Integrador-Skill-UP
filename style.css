@@ -66,20 +66,68 @@ html,body{ height:100%; background:var(--bg); color:var(--text); -webkit-font-sm
   border-color: var(--accent-1);
 }
 
-/* botão criar */
+/* botão criar (full-width primary) */
+.btn{
+  display: inline-block;
+  position: relative;
+  font-weight: 700;
+  font-family: inherit;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  transition: transform .16s cubic-bezier(.2,.9,.3,1), box-shadow .16s ease, background .12s ease;
+}
+
+/* Variantes usadas no HTML */
+.btn-primary{
+  background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
+  color: #fff;
+  box-shadow: 0 12px 36px rgba(6,10,25,0.12);
+}
+.btn-primary:hover{ transform: translateY(-4px); box-shadow: 0 20px 50px rgba(6,10,25,0.12); }
+
+.btn-outline{
+  background: transparent;
+  color: #fff;
+  border: 2px solid rgba(255,255,255,0.85);
+}
+.btn-outline:hover{ background: rgba(255,255,255,0.06); }
+
+.btn-secondary{
+  background: linear-gradient(90deg, #6b7280, #4b4b4b);
+  color: #fff;
+}
+
+/* full-width modifier */
 .btn.full{
   width:100%;
   padding:14px 16px;
   border-radius:12px;
-  background: linear-gradient(90deg,var(--accent-1),var(--accent-2));
-  color:#04202a;
-  font-weight:700;
-  border:0;
-  cursor:pointer;
-  box-shadow: 0 10px 30px rgba(7,18,30,0.12);
-  transition: transform .18s ease, box-shadow .18s ease;
 }
-.btn.full:hover{ transform: translateY(-6px); box-shadow: var(--shadow-2); }
+
+.btn:focus{ outline:none; box-shadow: 0 8px 30px rgba(133,0,249,0.12); }
+
+/* Navbar auth buttons (index) - place on the right side of header */
+.nav-container .auth-buttons{ display:flex; gap:12px; align-items:center; }
+.nav-container .auth-buttons .btn-outline{
+  color: var(--accent-1);
+  border: 2px solid var(--accent-1);
+  background: transparent;
+  padding:8px 16px;
+  border-radius:8px;
+}
+.nav-container .auth-buttons .btn-outline:hover{ background: rgba(133,0,249,0.06); color: #fff; }
+.nav-container .auth-buttons .btn-primary{
+  background: linear-gradient(90deg, var(--bg), #e09b00);
+  color:#fff;
+  padding:8px 18px;
+  border-radius:8px;
+}
+.nav-container .auth-buttons .btn-primary:hover{ transform: translateY(-2px); }
 
 /* link de entrar */
 .login-text{ margin-top:8px; color:black; font-size:.95rem; }
@@ -99,6 +147,10 @@ html,body{ height:100%; background:var(--bg); color:var(--text); -webkit-font-sm
   justify-content:center;
   text-align:center;
   background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+  /* make gradient animate by shifting background-position */
+  background-size: 300% 300%;
+  /* faster and smoother loop so movement is visible */
+  animation: gradientMove 6s linear infinite;
   color: #fff;
   position:relative;
   padding:24px;
@@ -120,6 +172,31 @@ html,body{ height:100%; background:var(--bg); color:var(--text); -webkit-font-sm
   animation: subtleShift 12s linear infinite alternate;
 }
 @keyframes subtleShift{ from{ transform: translateX(0) translateY(0);} to{ transform: translateX(-30px) translateY(-18px);} }
+@keyframes gradientMove{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+/* ================= REACT-DRIVEN SERVICES ANIMATIONS ============= */
+.react-services-root{ max-width:1100px; margin:0 auto; }
+.react-services-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:24px; }
+.react-service-card{
+  background: linear-gradient(180deg,#fff,#f7fbff);
+  border-radius:16px;
+  padding:26px;
+  box-shadow: 0 12px 36px rgba(6,10,25,0.06);
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform .6s cubic-bezier(.2,.9,.3,1), opacity .6s ease, box-shadow .22s ease;
+  display:flex; flex-direction:column; gap:12px;
+}
+.react-service-card.visible{ transform: translateY(0); opacity:1; box-shadow: 0 20px 50px rgba(6,10,25,0.08); }
+.react-service-card .icon{ font-size:28px; color: #fff; width:56px; height:56px; border-radius:12px; display:flex; align-items:center; justify-content:center; background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); }
+.react-service-card h3{ margin:0; font-size:1.2rem; color:var(--text); }
+.react-service-card p{ margin:0; color:var(--muted); line-height:1.5; }
+
+@media (max-width:900px){ .react-services-grid{ grid-template-columns: 1fr; } }
 
 .hero-content{ position:relative; z-index:1; max-width:980px; padding:8px 18px; animation: fadeInUp .9s ease both; }
 .hero-content h1{
@@ -135,9 +212,39 @@ html,body{ height:100%; background:var(--bg); color:var(--text); -webkit-font-sm
 
 .hero-content p{ font-size:1.05rem; margin-bottom:20px; opacity:0.95; color: rgba(255,255,255,0.95); }
 
+/* Hero: alinhar os botões lado a lado com gap e variante laranja para "Comece Agora" */
+.hero .hero-buttons{
+  display:flex;
+  gap:16px;
+  align-items:center;
+  justify-content:flex-start;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+.hero .hero-buttons .btn-primary{
+  background: linear-gradient(90deg, var(--accent), #e09b00);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 40px;
+  border: none;
+}
+.hero .hero-buttons .btn-outline{
+  border: 2px solid rgba(255,255,255,0.85);
+  color: #fff;
+  background: transparent;
+  padding: 10px 22px;
+  border-radius: 40px;
+}
+
+@media (max-width: 768px){
+  .hero .hero-buttons{ flex-direction:column; gap:12px; align-items:center; }
+}
+
 /* botão grande do hero (estiloso) */
 .btn.glow{
   display:inline-block;
+  position:relative;
+  overflow:hidden;
   padding:18px 44px;
   border-radius:999px;
   background: linear-gradient(90deg, #ffffff, #f4f7ff);
@@ -433,8 +540,59 @@ html,body{ height:100%; background:var(--bg); color:var(--text); -webkit-font-sm
   align-items:center;
   justify-content:center;
   background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+.auth-container{
+  min-height: calc(70vh - 40px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 20px;
+}
+.auth-box{
+  width:100%;
+  max-width:520px;
+  background: linear-gradient(180deg, #ffffff, #fbfbff);
+  border-radius:16px;
+  padding:32px;
+  box-shadow: 0 20px 50px rgba(6,10,25,0.08);
+  text-align: center;
+}
+.auth-box h2{ font-size:1.6rem; margin-bottom:6px; color:var(--text); }
+.auth-box p.lead{ color:var(--muted); margin-bottom:18px; }
+.form-group{ margin-bottom:16px; }
+.form-logo{
+  display:block;
+  margin:0 auto 18px;
+  width:220px;
+  max-width:100%;
+  height:auto;
+  object-fit:contain;
+}
+.form-group label{ display:block; font-weight:700; color:var(--text); margin-bottom:8px; text-align:left; }
+.form-group input, .form-group select{ width:100%; padding:12px 14px; border-radius:10px; border:1px solid #e6eef8; background:#fff; font-size:1rem; }
+.form-options{ display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; }
+.auth-link{ text-align:center; margin-top:14px; color:var(--muted); }
+.auth-link a{ color:var(--accent-1); font-weight:700; text-decoration:none; }
+/* Button: base + variants (used across pages) */
+.btn{ display:inline-block; padding:10px 20px; border-radius:12px; font-weight:700; cursor:pointer; text-decoration:none; border:0; background:transparent; color:var(--text); transition: transform .18s ease, box-shadow .18s ease, filter .12s ease; }
+
+/* Primary (gradient) */
+.btn-primary, .btn.primary{ background: linear-gradient(90deg,var(--accent-1),var(--accent-2)); color: #fff; border:0; padding:12px 26px; border-radius:40px; font-weight:800; box-shadow: 0 12px 36px rgba(6,10,25,0.12); }
+.btn-primary:hover, .btn.primary:hover{ transform: translateY(-3px); filter:brightness(1.03); }
+
+/* Outline variant */
+.btn-outline{ background: transparent; color: var(--accent-1); border: 2px solid rgba(133,0,249,0.18); }
+.btn-outline:hover{ background: rgba(133,0,249,0.08); color: #fff; }
+
+/* Secondary / subtle */
+.btn-secondary{ background:transparent; border:2px solid rgba(16,24,40,0.06); padding:10px 16px; border-radius:10px; cursor:pointer; }
   padding:28px;
 }
+#toast-container{ position:fixed; right:20px; top:20px; z-index:9999; display:flex; flex-direction:column; gap:10px; }
+.toast{ min-width:220px; max-width:360px; padding:12px 16px; border-radius:10px; color: #fff; box-shadow: 0 10px 30px rgba(6,10,25,0.12); display:flex; align-items:center; gap:10px; font-weight:700; }
+.toast.success{ background: linear-gradient(90deg, var(--accent-1), var(--bg)); }
+.toast.error{ background: linear-gradient(90deg, #ff6b6b, #ff8a80); }
+.toast.info{ background: linear-gradient(90deg, var(--accent-2), var(--accent-1)); }
+.toast .icon{ width:32px; height:32px; display:inline-flex; align-items:center; justify-content:center; border-radius:8px; background: rgba(255,255,255,0.12); color: #fff; }
 /* ====================== CARDS SOBRE A SKILLUP ====================== */
 .skillup-info-section{
   padding: 80px 10%;
@@ -655,8 +813,38 @@ html,body{ height:100%; background:var(--bg); color:var(--text); -webkit-font-sm
 @media (max-width:800px){
   .game-link-section{ padding: 28px 6%; }
   .game-link-card{ padding:18px; }
+  .form-logo{ width:160px; max-width:100%; height:auto; margin-bottom:12px; }
   .btn.glow{ padding:14px 22px; }
+
+/* small helpers moved from inline styles in suposto.html */
+.about-bg{ background-color: #f0f5ff; }
+.centered-actions{ text-align: center; }
+
+/* Modal (reset password) */
+.modal-overlay{ position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(6,10,25,0.4); opacity:0; pointer-events:none; transition: opacity .22s ease; z-index:10010; }
+.modal-overlay.open{ opacity:1; pointer-events:auto; }
+.modal-card{ width:100%; max-width:520px; background: #fff; border-radius:12px; padding:20px; box-shadow: 0 20px 60px rgba(6,10,25,0.12); position:relative; }
+.modal-card h3{ margin:0 0 8px 0; }
+.modal-card p{ margin:0 0 12px 0; color:var(--muted); }
+.modal-close{ position:absolute; right:18px; top:14px; background:transparent; border:0; font-size:20px; cursor:pointer; }
+.modal-card .form-group{ margin-bottom:8px; }
+.modal-card .btn.primary{ padding:10px 14px; }
+.modal-card .btn.secondary{ padding:10px 14px; }
 }
+
+/* Dashboard / app header (white background, orange links) */
+.app-header{
+  background: #fff;
+  color: var(--bg);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(6,10,25,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.app-header .logo, .app-header .app-nav ul li a{ color: var(--bg); font-weight:700; }
+.app-header .logo img{ height:44px; width:auto; object-fit:contain; border-radius:6px; }
+
 
 /* ======================= PÁGINA: FUNCIONAMENTO / DOCS ======================= */
 .doc-header{
